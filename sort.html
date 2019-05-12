@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title> Sort Program</title>
+<meta name="description" content="My parse App">
+<meta name="viewport" content="width=device-width">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://npmcdn.com/parse/dist/parse.min.js"></script>
+
+</head>
+<body>
+<table border="1">
+<script type="text/javascript">
+
+function select(arr)
+{
+  document.write("<caption>"+"선택정렬과정"+"</caption>");
+  document.write("<tr>")
+  document.write("<th>"+arr[0]+"</th>"+"<th>"+arr[1]+"</th>"+"<th>"+arr[2]+"</th>"+"<th>"+arr[3]+"</th>"+"<th>"+arr[4]+"</th>")
+  document.write("</tr>")
+  for(i=0;i<=4;i++)
+  {
+    for(j=i+1;j<=4;j++)
+    {
+      if(arr[i]>arr[j])
+      {
+        temp=arr[i];
+        arr[i]=arr[j];
+        arr[j]=temp;
+        document.write("<tr>")
+        document.write("<td>"+arr[0]+"</td>"+"<td>"+arr[1]+"</td>"+"<td>"+arr[2]+"</td>"+"<td>"+arr[3]+"</td>"+"<td>"+arr[4]+"</td>")
+        document.write("</tr>")
+      }
+    }
+  }
+  document.write("<tr>")
+  document.write("<th>"+arr[0]+"</th>"+"<th>"+arr[1]+"</th>"+"<th>"+arr[2]+"</th>"+"<th>"+arr[3]+"</th>"+"<th>"+arr[4]+"</th>")
+  document.write("</tr>")
+}
+
+function bubble(arr)
+{
+  document.write("<caption>"+"버블정렬과정"+"</caption>");
+  document.write("<tr>")
+  document.write("<th>"+arr[0]+"</th>"+"<th>"+arr[1]+"</th>"+"<th>"+arr[2]+"</th>"+"<th>"+arr[3]+"</th>"+"<th>"+arr[4]+"</th>")
+  document.write("</tr>")
+  for(i=0;i<=4;i++)
+  {
+    for(j=0;j<=4-1;j++)
+    {
+      if(arr[j]>arr[j+1])
+      {
+        temp=arr[j];
+        arr[j]=arr[j+1];
+        arr[j+1]=temp;
+        document.write("<tr>")
+        document.write("<td>"+arr[0]+"</td>"+"<td>"+arr[1]+"</td>"+"<td>"+arr[2]+"</td>"+"<td>"+arr[3]+"</td>"+"<td>"+arr[4]+"</td>")
+        document.write("</tr>")
+      }
+    }
+  }
+  document.write("<tr>")
+  document.write("<th>"+arr[0]+"</th>"+"<th>"+arr[1]+"</th>"+"<th>"+arr[2]+"</th>"+"<th>"+arr[3]+"</th>"+"<th>"+arr[4]+"</th>")
+  document.write("</tr>")
+}
+
+function insert(arr)
+{
+  document.write("<caption>"+"삽입정렬"+"</caption>");
+  document.write("<tr>")
+  document.write("<th>"+arr[0]+"</th>"+"<th>"+arr[1]+"</th>"+"<th>"+arr[2]+"</th>"+"<th>"+arr[3]+"</th>"+"<th>"+arr[4]+"</th>")
+  document.write("</tr>")
+for(i=1;i<5;i++)
+{
+  key=arr[i];
+  for(j=i-1;j>=0&&arr[j]>key;j--){
+    arr[j+1]=arr[j];
+  }
+  arr[j+1]=key;
+  document.write("<tr>")
+  document.write("<td>"+arr[0]+"</td>"+"<td>"+arr[1]+"</td>"+"<td>"+arr[2]+"</td>"+"<td>"+arr[3]+"</td>"+"<td>"+arr[4]+"</td>")
+  document.write("</tr>")
+}
+  document.write("<tr>")
+  document.write("<th>"+arr[0]+"</th>"+"<th>"+arr[1]+"</th>"+"<th>"+arr[2]+"</th>"+"<th>"+arr[3]+"</th>"+"<th>"+arr[4]+"</th>")
+  document.write("</tr>")
+}
+
+function shell(arr)
+{
+  document.write("<caption>"+"쉘정렬"+"</caption>");
+  document.write("<tr>")
+  document.write("<th>"+arr[0]+"</th>"+"<th>"+arr[1]+"</th>"+"<th>"+arr[2]+"</th>"+"<th>"+arr[3]+"</th>"+"<th>"+arr[4]+"</th>")
+  document.write("</tr>")
+for(h=5/2;h>=1;h/=2)
+{
+  for(k=0;k<h;k++)
+  {
+    for(i=k;i<5;i+=h)
+    {
+      t=arr[i];
+      j=i;
+      j-=h;
+      while(arr[j]>t)
+      {
+        arr[j+h]=arr[j];
+        i-=h;
+        if(j<0) break;
+      }
+      j+=h;
+      arr[i]=t;
+    }
+  }
+}
+document.write("<tr>")
+document.write("<th>"+arr[0]+"</th>"+"<th>"+arr[1]+"</th>"+"<th>"+arr[2]+"</th>"+"<th>"+arr[3]+"</th>"+"<th>"+arr[4]+"</th>")
+document.write("</tr>")
+}
+
+var a=prompt("숫자를입력하세요");
+var b=prompt("숫자를입력하세요");
+var c=prompt("숫자를입력하세요");
+var d=prompt("숫자를입력하세요");
+var e=prompt("숫자를입력하세요");
+
+a=Number(a);
+b=Number(b);
+c=Number(c);
+d=Number(d);
+e=Number(e);
+
+var arr=new Array(5);
+
+arr[0]=a;
+arr[1]=b;
+arr[2]=c;
+arr[3]=d;
+arr[4]=e;
+
+var i,j,temp,k,h;
+
+var se="1:selcet 정렬";
+var bu="2:bubble 정렬";
+var ins="3:insert 정렬";
+var sh="4:shell 정렬"
+
+var sort_list=se+"\n"+bu+"\n"+ins+"\n"+sh;
+var choice=prompt("원하시는 정렬의 번호를 입력하세요 \n"+sort_list,"1");
+
+if(choice=="1")
+ select(arr);
+else if (choice=="2")
+bubble(arr);
+else if(choice=="3")
+insert(arr);
+else if(choice=="4")
+shell(arr);
+
+else{
+  alert("리스트에 없는 정렬입니다.");
+}
+
+
+</script>
+</table>
+</body>
+<html>
